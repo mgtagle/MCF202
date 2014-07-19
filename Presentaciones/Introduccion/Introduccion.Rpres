@@ -137,12 +137,12 @@ Ejemplo de replicabilidad:
 ========================================================
 Los datos del inventario realizado en la parcela 1 del experimento __Aclareos__ se presentan en el siguiente cuadro:
 ```{r directorio, results='asis', echo=FALSE}
-setwd("/Volumes/TOSHIBA/Rstudio/MCF202/data/")
+setwd("C:/Users/marco/Documents/GitHub/MCF202/data/")
 inventario <- read.csv("inventario.csv")
 kable(head(inventario))
 ```
 
-La media de la variable diámetro es `r mean(inventario$Diametro)` y su desviación estándar es de `r sd(inventario$Diametro)`.
+La media de la variable temperatura es `r mean(inventario$TEMP)` y su desviación estándar es de `r sd(inventario$TEMP)`.
 
 
 Ejemplo de replicabilidad:
@@ -151,8 +151,8 @@ Se examinó la relación entre las variables diámetro y altura usando un siguie
 $Y= \beta_0 + \beta_1 x + \epsilon$.
 
 ```{r modelo, fig.width=3.5, fig.height=3, fig.align='center', echo=FALSE}
-plot(inventario$Diametro, inventario$Volumen, pch=20, col='darkgray')
-fit <-lm(inventario$Volumen~ inventario$Diametro)
+plot(inventario$TEMP , inventario$HR , pch=20, col='darkgray')
+fit <-lm(inventario$HR~ inventario$TEMP)
 abline(fit, lwd=2)
 ```
 
