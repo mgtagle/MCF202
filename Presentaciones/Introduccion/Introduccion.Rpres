@@ -1,6 +1,6 @@
-Analisis estadistico 
+Análisis estadístico 
 =======================================================
-author: Dr. Marco Aurelio Gonzalez Tagle
+author: Dr. Marco Aurelio González Tagle
 date: Agosto 2014
 transition: linear
 ## MCF 202 Aplicaciones y Conceptos
@@ -8,3 +8,196 @@ transition: linear
 https://rpubs.com/mgtagle-73/Introduccion_202
 https://github.com/mgtagle/MCF202
 
+
+Objetivos del curso
+========================================================
+
+* Desarrollar en los estudiantes la habilidad para el análisis estadístico y principios de diseño para la fundamentación de la investigación científica en el manejo de los recursos forestales.
+
+* Replicabilidad de los análisis mediante el uso de **R** y **Rstudio**
+
+Desarrollo del curso
+========================================================
+
+El curso consta de 20 horas presenciales y  __x horas autoestudio__ (desarrollar por el participante) generalmente para resolver los ejercicios encargados en la clase.
+
+
+Contenido del curso
+=====================================================
+1.  Introducción al lenguaje R
+2.  Estadísticas descriptivas de datos provenientes de inventarios
+    forestales
+3.  Contraste de hipótesis
+4.  Correlación y regresión lineal
+5.  Análisis de varianza
+
+Entrega de asignaciones en el curso
+=====================================================
+
+Las tareas resueltas son enviadas por email a una base de datos en __Evernote__.
+
+* Pasos a seguir para registrar exitosamente sus tareas en evernote:
+  - Email: mgtagle01.5730fe4@m.evernote.com
+  - En el Asunto del email se debe incluir: su nombre, número de matrícula y la siguiente indicación (sin espacio): @Ejercicio1.
+  - Ejemplo: __Marco A. González Tagle Matrícula 1213458 @Ejercicio1__
+
+
+
+Objetivo principal del curso
+========================================================
+
+
+**Replicabilidad de los análisis y generación de reportes dinámicos**
+
+![R](http://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png)
+
+Problemática en las investigaciones
+========================================================
+
+El proceso estadístico (códigos o procesos) no está implícito en un documento (tesis, reporte, artículo) que describe los resultados es decir, generalmente se realizan el siguiente proceso
+* Generar una base de datos
+* Procesa en Excel, SPSS, Statistica, u otro software estadístico
+* Los resultados obtenidos son exportados a Word, mediante __copy and paste__
+
+
+
+¿Posible solución?
+========================================================
+
+### Cuando se escribe un artículo, reporte o informe, es deseable que estén en un solo documento
+
+
+**Replicabilidad de los análisis y generación de reportes dinámicos**
+
+* Los análisis que se aplican en la investigación (proceso estadístico) y
+* Las descripción de los análisis y resultados (descripción de los resultados) se encuentren en un solo documento
+* Mediante un click este generado o actualizado nuestro documento.
+
+
+
+¿Qué es Replicabilidad de análisis?
+========================================================
+
+1. La replicabilidad tiene que ver con la  posibilidad de reproducir los resultados de un experimento o investigación.
+2. Cuando un experimento produce resultados raros o irreproducibles tienen poco o nulo valor científico.
+3. Generar reportes para la tesis, generar los ejercicios de este curso
+4. Con la facilidad de un solo click 
+
+
+Literate statistical programming
+========================================
+incremental: true
+
+**Leer y escribir programación estadística**
+
+* Un artículo está compuesto de texto y códigos
+* Códigos para un análisis están divididos en _chunks_
+* La presentación final de un código puede ser en cuadros, figuras, etc.
+* El texto del artículo explica que está pasando con los análisis
+* El texto y código son compilados para tener un documento que puede ser leído por humanos
+
+
+Leer y escribir programación estadística
+=======================================================
+
+Para aplicar el concepto de *leer y escribir programación estadística*, se necesita:
+* Un lenguaje para la documentación
+* un lenguaje para programar
+
+*knitr* es la librería de *R* que proporciona un lenguaje de documentación
+
+¿Cómo puedo hacer mi trabajo replicable?
+===========================================
+incremental: true
+
+Para poder obtener un trabajo, análisis, reporte de manera dinámica y replicable debemos de tomar en cuanta:
+
+1. Estar decidido a realizarlo (desde el inicio)
+2. Tener un registro de los cambios que se realiza, utilizando **versiones control**
+3. Usar u software que su operación nos permita utilizar códigos **Escribir las operaciones**
+4. Pre procesamiento de la base de datos **datos limpios**
+
+
+Ventajas de leer y escribir programación estadística
+===========================================
+
+* Texto y códigos para realizar un análisis están en un solo documento y ordenados lógicamente
+* Si los datos son mejorados, el documento final es actualizado automáticamente
+* Código utilizado se dice que esta _vivo_ al actualizar los resultados automáticamente
+
+
+Desventajas de leer y escribir programación estadística
+===========================================
+
+* Documentos con una gran cantidad de códigos
+* Disminuir la velocidad de procesamiento
+
+
+Ejemplo de replicabilidad:
+========================================================
+Los datos del inventario realizado en la parcela 1 del experimento __Aclareos__ se presentan en el siguiente cuadro:
+```{r directorio, results='asis', echo=FALSE}
+setwd("/Volumes/TOSHIBA/Rstudio/MCF202/data/")
+inventario <- read.csv("inventario.csv")
+kable(head(inventario))
+```
+
+La media de la variable diámetro es `r mean(inventario$Diametro)` y su desviación estándar es de `r sd(inventario$Diametro)`.
+
+
+Ejemplo de replicabilidad:
+========================================================
+Se examinó la relación entre las variables diámetro y altura usando un siguiente modelo el regresión lineal:
+$Y= \beta_0 + \beta_1 x + \epsilon$.
+
+```{r modelo, fig.width=3.5, fig.height=3, fig.align='center', echo=FALSE}
+plot(inventario$Diametro, inventario$Volumen, pch=20, col='darkgray')
+fit <-lm(inventario$Volumen~ inventario$Diametro)
+abline(fit, lwd=2)
+```
+
+La pendiente de la regresión lineal es la siguiente: `r coef(fit)[2]`
+Los primeros seis valores que toma la y prima son: `r head(fitted(fit))`
+
+Documento dinámico
+===============================
+left:80%
+![codigo + texto](https://raw.githubusercontent.com/mgtagle/MCF202/master/figuras/rstudio.png)
+***
+Estas líneas contienen:
+* Lenguaje de documentación (**Markdown**)
+* Lenguaje de programación (**Chunks**)
+
+¿Qué es knitr?
+==============================
+![logo kitr](http://yihui.name/knitr/images/knit-logo.png)
+* Es una librería escrita por **Yohui Xie** (durante su estancia en posgrado en la Universidad de Iowa).
+* Lenguaje de documentación: Puede escribir lenguaje RMarkdown, Latex y html.
+* Puede exportar a documentos, pdf, html y word
+* Incorporado al software Rstudio
+
+Requerimientos
+==============================
+* Versión reciente de __R__
+* Editor de textos: **Rstudio**, **Tinn-R**
+* Paqueterías del CRAN (repositorio de R)
+* Conocimientos básicos de Markdown (aplicable en nuestro curso).
+
+
+¿Markdown?
+==============================
+
+* Lenguaje simple denominado __markup__
+* No se requiere un editor en especial
+* Simple, intuitivo en el formato de un documento
+* Información complementaria se encuentra
+* tutorial: <http://joedicastro.com/pages/markdown.html>
+
+Ventajas de Markdown
+==============================
+
+* Crear manuales
+* Generar reportes periódicos
+* Tutoriales
+* Alimentador de blogs
+* Procesar datos y alimentar un documento dinámico
