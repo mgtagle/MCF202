@@ -137,8 +137,8 @@ Ejemplo de replicabilidad:
 ========================================================
 Los datos del inventario realizado en la parcela 1 del experimento __Aclareos__ se presentan en el siguiente cuadro:
 ```{r directorio, results='asis', echo=FALSE}
-setwd("C:/Users/marco/Documents/GitHub/MCF202/data/")
-inventario <- read.csv("inventario.csv")
+#setwd("C:/Users/marco/Documents/GitHub/MCF202/data/")
+inventario <- read.csv("https://raw.githubusercontent.com/mgtagle/MCF202/master/data/Inventario.csv", header=TRUE)
 kable(head(inventario))
 ```
 
