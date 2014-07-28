@@ -1,0 +1,123 @@
+Análisis Estadístico
+========================================================
+author: Dr. Marco Aurelio González Tagle
+date:   Agosto 2014
+transition: linear
+## Clase 1: Manipulación de datos en R
+
+
+Importar datos a R
+========================================================
+**Importar base de datos creada en Excel**. El documento se debe encontra en formato **csv** en una carpeta establecida para almacenar las bases de datos. Ejemplo: `C:/MCF202/Data `
+
+- Utilizar el comando **read.cvs**
+
+
+Importar datos a R (cont...)
+========================================================
+Ejemplo para importar datos
+
+```{r importar}
+#setwd("F:/Rstudio/Principios_estadistica/Data")
+setwd("/Volumes/TOSHIBA/Rstudio/Principios_estadistica/Data")
+CedroRojo <- read.csv("cedrorojo.csv", header=T)
+```
+
+Revisar los datos
+========================================================
+Usando **R**
+--------------------------------------------------------
+
+Los datos **Cedro Rojo** se encuentran ya disponibles
+
+```{r}
+head(CedroRojo)
+```
+
+Determinar la media de la variable altura
+========================================================
+
+Revisar: la variable altura se encuentra dentro de la base de datos **CedroRojo**
+
+```{r}
+mean(CedroRojo$altura)
+```
+
+Determinar la media de la variable diámetro
+========================================================
+
+Lo mismo sucede con la variable *diametro*, se encuentra dentro de la base de datos **CedroRojo**. Es importante utilizar el simbolo _$_ para especificar el lugar donde se encuentra.
+
+```{r}
+mean(CedroRojo$diametro)
+```
+
+Coeficiente de variación: 
+========================================================
+¿Cuál es el coeficiente de variación de las observaciones en __altura__?
+
+```{r}
+sd(CedroRojo$altura)/mean(CedroRojo$altura)*100
+```
+
+
+Selección específica
+================================================
+
+<small> Determinar cuantos individuos existen por debajo de la **media o un valor establecido** </small>
+- igual o mayor (>=)
+- igual o menor (<=)
+- mayor que (>)
+- menor que (<)
+- igual que (==)
+- no igual (!=)
+
+
+*Crawley, J. (2012) The R Book, Chapter 1, pp. 27*
+
+Ejemplo
+==============================
+¿Cuántos individuos poseen un diámetro mayor o igual a 2 cm?
+
+```{r}
+sum(CedroRojo$diametro >=2)
+```
+
+
+Ejemplo (1)
+==============================
+¿Cuántos individuos poseen un diámetro menor a 10 cm?
+
+```{r}
+sum(CedroRojo$diametro < 10)
+```
+
+Ejemplo (2)
+===============================
+
+¿Qué valor obtenemos aplicando el siguiente comando?
+```{r}
+sum(CedroRojo$diametro < 12)
+```
+Respuesta: Obtenemos la sumatoria de las plántulas de Cedro rojo  que tiene un diametro menor a 12 cm.
+
+Ejemplo (3)
+===============================
+
+¿Qué valor obtenemos aplicando el siguiente comando?
+```{r}
+sum(CedroRojo$diametro[CedroRojo$diametro < 12])
+ 
+```
+Respuesta: Obtenemos la sumatoria de todos los 71 diametros de las plántulas de Cedro rojo que tiene un diametro menor a 12 cm.
+
+
+Correlación entre Variables
+===============================
+Buscar la correlación entre el diámetro y altura
+
+```{r}
+cor.test(CedroRojo$diametro, CedroRojo$altura)
+```
+
+
