@@ -45,10 +45,10 @@ Las tareas resueltas son enviadas por email a una base de datos en __Evernote__.
 
 Objetivo principal del curso
 ========================================================
-
+left:50%
 
 **Replicabilidad de los análisis y generación de reportes dinámicos**
-
+***
 ![R](http://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png)
 
 Problemática en las investigaciones
@@ -137,8 +137,7 @@ Ejemplo de replicabilidad:
 ========================================================
 Los datos del inventario realizado en la parcela 1 del experimento __Aclareos__ se presentan en el siguiente cuadro:
 ```{r directorio, results='asis', echo=FALSE}
-#setwd("C:/Users/marco/Documents/GitHub/MCF202/data/")
-inventario <- read.csv("https://raw.githubusercontent.com/mgtagle/MCF202/master/data/Inventario.csv", header=TRUE)
+inventario <- read.csv("/Users/mawilova/git_repositories/MCF_202/data/Inventario.csv", header=TRUE)
 kable(head(inventario))
 ```
 
