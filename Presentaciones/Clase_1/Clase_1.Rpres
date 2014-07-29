@@ -18,17 +18,16 @@ Importar datos a R (cont...)
 Ejemplo para importar datos
 
 ```{r importar}
-#setwd("F:/Rstudio/Principios_estadistica/Data")
-setwd("/Volumes/TOSHIBA/Rstudio/Principios_estadistica/Data")
-CedroRojo <- read.csv("cedrorojo.csv", header=T)
+
+CedroRojo <- read.csv("/Volumes/TOSHIBA/Rstudio/Principios_estadistica/Data/cedrorojo.csv", header=T)
 ```
 
 Revisar los datos
 ========================================================
-Usando **R**
---------------------------------------------------------
+## Usando **R**
 
-Los datos **Cedro Rojo** se encuentran ya disponibles
+
+Los datos en la matriz **CedroRojo** se encuentran ya disponibles. para revisar solamente los primeras seis filas empleamos el comando:
 
 ```{r}
 head(CedroRojo)
@@ -37,20 +36,20 @@ head(CedroRojo)
 Determinar la media de la variable altura
 ========================================================
 
-Revisar: la variable altura se encuentra dentro de la base de datos **CedroRojo**
+Revisar: la media de la variable altura de la base de datos **CedroRojo** es: `r mean(CedroRojo$altura)` y la media para el diámetro es `r mean(CedroRojo$diametro)`
+
 
 ```{r}
 mean(CedroRojo$altura)
 ```
 
-Determinar la media de la variable diámetro
-========================================================
 
-Lo mismo sucede con la variable *diametro*, se encuentra dentro de la base de datos **CedroRojo**. Es importante utilizar el simbolo _$_ para especificar el lugar donde se encuentra.
+Es importante utilizar el simbolo _$_ para especificar el lugar donde se encuentra.
 
 ```{r}
 mean(CedroRojo$diametro)
 ```
+
 
 Coeficiente de variación: 
 ========================================================
@@ -84,7 +83,7 @@ sum(CedroRojo$diametro >=2)
 ```
 
 
-Ejemplo (1)
+Ejemplo 
 ==============================
 ¿Cuántos individuos poseen un diámetro menor a 10 cm?
 
@@ -92,7 +91,7 @@ Ejemplo (1)
 sum(CedroRojo$diametro < 10)
 ```
 
-Ejemplo (2)
+Ejemplo
 ===============================
 
 ¿Qué valor obtenemos aplicando el siguiente comando?
@@ -101,7 +100,7 @@ sum(CedroRojo$diametro < 12)
 ```
 Respuesta: Obtenemos la sumatoria de las plántulas de Cedro rojo  que tiene un diametro menor a 12 cm.
 
-Ejemplo (3)
+Ejemplo
 ===============================
 
 ¿Qué valor obtenemos aplicando el siguiente comando?
@@ -112,12 +111,69 @@ sum(CedroRojo$diametro[CedroRojo$diametro < 12])
 Respuesta: Obtenemos la sumatoria de todos los 71 diametros de las plántulas de Cedro rojo que tiene un diametro menor a 12 cm.
 
 
-Correlación entre Variables
-===============================
-Buscar la correlación entre el diámetro y altura
+Selección de datos
+==============================
 
-```{r}
-cor.test(CedroRojo$diametro, CedroRojo$altura)
+Para obtener una muestra de los datos colectados en campo bajo un criterio específico utilzamos el comando `subset`:
+
+```{r seleccion}
+cedro.2 <-subset(CedroRojo, diametro < 12)
+head(cedro.2)
 ```
+
+Agregar una nueva variable
+===============================
+Para agregar una nueva variable (compuesta) a una base de datos aplicamos el comando `transform`.
+
+```{r transformar}
+cedro.3 <-transform(cedro.2, diam2=(diametro^2))
+head(cedro.3)
+```
+
+Selección de datos agrupados
+==============================
+
+Si tenemos una base de datos con datos agrupados por tratamientos, podemos seleccionar una muestra de un solo tratamiento.
+Ejemplo:
+```{r, results='asis', echo=FALSE}
+inventario <- read.csv("/Users/mawilova/git_repositories/MCF_202/data/InventarioSitios.csv", header=TRUE)
+kable(head(inventario))
+```
+
+Selección de datos agrupados
+==============================
+
+Seleccionar los datos del sitio 1 **S1**
+
+```{r, results='asis'}
+inventarioS1 <-subset(inventario, Sitio=="S1") 
+kable(head(inventarioS1))
+```
+
+Selecionar los datos del Sitio 2
+==================================
+
+Por favor seleccione los datos del sitio 2 y realice las siguientes actividades
+
+1. Determinar la media de temperatura para el S2
+2. determinar la media de HR
+3. Determinar la media de HUMCOMB
+
+Selecionar los datos del Sitio 2
+==================================
+
+Por favor seleccione los datos del sitio 2 y realice las siguientes actividades
+
+```{r, results='asis'}
+inventarioS2 <-subset(inventario, Sitio=="S2") 
+kable(head(inventarioS2))
+```
+
+Estadísticas básicas para el sitio 2
+==============================
+1. Determinar la media de temperatura para el S2: `r mean(inventarioS2$TEMP)`
+2. determinar la media de HR: `r mean(inventarioS2$HR)`
+3. Determinar la media de HUMCOMB: `r mean(inventarioS2$HUMCOMB)`
+
 
 
