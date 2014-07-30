@@ -1,0 +1,44 @@
+---
+title: "Ejemplo reproductibilidad de análisis"
+author: "Dr. Marco Auerlio González Tagle"
+date: "30 de julio de 2014"
+output: pdf_document
+---
+
+### Ejemplo con datos provenientes de una estación meteorológica
+
+
+```{r, results='asis'}
+library(knitr)
+inventario <- read.csv("/Users/mawilova/git_repositories/MCF_202/data/InventarioSitios.csv", header=TRUE)
+kable(head(inventario))
+```
+
+### Estadísticas descriptivas
+
+```{r, echo=FALSE}
+library(stargazer)
+stargazer(inventario, type="text")
+```
+
+### Ejemplo
+
+```{r}
+
+linear.1 <- lm(rating ~ complaints + privileges + learning + raises + critical, data=attitude)
+linear.2 <- lm(rating ~ complaints + privileges + learning, data=attitude)
+```
+
+ 
+## create an indicator dependent variable, and run a probit model
+ 
+
+```{r}
+attitude$high.rating <- (attitude$rating > 70)
+probit.model <- glm(high.rating ~ learning + critical + advance, data=attitude, family = binomial(link = "probit"))
+```
+
+```{r}
+stargazer(linear.1, linear.2, probit.model, title="Regression Results", align=TRUE, dep.var.labels=c("Overall Rating","High Rating"), covariate.labels=c("Handling of Complaints","No Special Privileges", "Opportunity to Learn","Performance-Based Raises","Too Critical","Advancement"), omit.stat=c("LL","ser","f"), no.space=TRUE, type="text")
+```
+
