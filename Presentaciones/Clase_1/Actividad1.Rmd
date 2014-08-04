@@ -1,5 +1,4 @@
 
-
 # MCF202 Análisis estadísticos
 ## Actividad 1: Manipulación de datos en R
 
@@ -36,64 +35,12 @@ HR: Humedad relativa
 
 1. Determinar la media aritmética para cada una de las variables medidas::
   * Cual es la media de la variable **TEMPCOMB**: `r mean(cumbres$TEMPCOMB)`
-  * Cual es la media de la variable **HUMCOMB**: `r mean(ocampo$TEMPCOMB)`
+  * Cual es la media de la variable **HUMCOMB**: `r mean(cumbres$TEMPCOMB)`
   * Cual es la media de la variable **TEMP**: `r mean(cumbres$TEMP)`
   * Cual es la media de la variable **HR**: `r mean(cumbres$HR)`
 
 
 ### Conteste las siguientes preguntas:
-
-```{r ttestHUMCOMB}
-t.test(cumbres$HUMCOMB, ocampo$HUMCOMB, var.equal=TRUE)
-prueba.humcomb <- t.test(cumbres$HUMCOMB, ocampo$HUMCOMB, var.equal=TRUE)
-```
-
-
-1. Establezca la Hipotesis nula: ________________________________________________________________________
-2. Aplique la purba de t correspondiente y conteste lo siguiente:
-  * Cual es la media de la variable **HUMCOMB** en Cumbres: `r mean(cumbres$HUMCOMB)`
-  * Cual es la media de la variable **HUMCOMB** en Ocampo: `r mean(ocampo$HUMCOMB)`
-  * Cuantos grados de libertad tiene el estudio: `r prueba.humcomb$parameter`
-  * Cual es el valor de P-value de la variable *HUMCOMB*: `r prueba.humcomb$p.value`
-  * Cual hipótesis se acepta: ________________________________________________________________________
-
-
-
-### Variable TEMP (Temperatura)
-
-Conteste las siguientes preguntas:
-
-```{r ttestTEMP}
-t.test(cumbres$TEMP, ocampo$TEMP, var.equal=TRUE)
-prueba.temp <- t.test(cumbres$TEMP, ocampo$TEMP, var.equal=TRUE)
-```
-
-
-1. Establezca la Hipotesis nula: ________________________________________________________________________
-2. Aplique la purba de t correspondiente y conteste lo siguiente:
-  * Cual es la media de la variable **TEMP** en Cumbres: `r mean(cumbres$TEMP)`
-  * Cual es la media de la variable **TEMP** en Ocampo: `r mean(ocampo$TEMP)`
-  * Cuantos grados de libertad tiene el estudio: `r prueba.temp$parameter`
-  * Cual es el valor de P-value de la variable *TEMP*: `r prueba.temp$p.value`
-  * Cual hipótesis se acepta: ________________________________________________________________________
-
-### Variable HR (Humedad Relativa)
-
-Conteste las siguientes preguntas:
-
-```{r ttestHR}
-t.test(cumbres$HR, ocampo$HR, var.equal=TRUE)
-prueba.HR <- t.test(cumbres$HR, ocampo$HR, var.equal=TRUE)
-```
-
-
-1. Establezca la Hipotesis nula: ________________________________________________________________________
-2. Aplique la purba de t correspondiente y conteste lo siguiente:
-  * Cual es la media de la variable **HR** en Cumbres: `r mean(cumbres$HR)`
-  * Cual es la media de la variable **HR** en Ocampo: `r mean(ocampo$HR)`
-  * Cuantos grados de libertad tiene el estudio: `r prueba.HR$parameter`
-  * Cual es el valor de P-value de la variable *HR*: `r prueba.HR$p.value`
-  * Cual hipótesis se acepta: ________________________________________________________________________
 
 ## Entrega a Evernote 
 Para registrar su Practica 5 exitosamente en **evernote** favor de seguir las siguientes instrucciones:
