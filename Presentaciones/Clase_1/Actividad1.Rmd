@@ -35,15 +35,19 @@ HR: Humedad relativa
 
 1. Determinar la media aritmética para cada una de las variables medidas::
   * Cual es la media de la variable **TEMPCOMB**: `r mean(cumbres$TEMPCOMB)`
-  * Cual es la media de la variable **HUMCOMB**: `r mean(cumbres$TEMPCOMB)`
+  * Cual es la media de la variable **HUMCOMB**: `r mean(cumbres$HUMCOMB)`
   * Cual es la media de la variable **TEMP**: `r mean(cumbres$TEMP)`
   * Cual es la media de la variable **HR**: `r mean(cumbres$HR)`
 
 
 ### Conteste las siguientes preguntas:
 
+
+
+
+
 ## Entrega a Evernote 
 Para registrar su Practica 5 exitosamente en **evernote** favor de seguir las siguientes instrucciones:
-En el Asunto del email se debe incluir su nombre, número de matrícula seguido de las siguient indicacion: @Practica5 
+En el Asunto del email se debe incluir su nombre, número de matrícula seguido de las siguient indicacion: @Actividad1 
 
 **Ejemplo: Marco A. González Tagle Matricula 1213458 @Practica5**
