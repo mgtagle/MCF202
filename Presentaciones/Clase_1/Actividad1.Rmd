@@ -50,4 +50,4 @@ HR: Humedad relativa
 Para registrar su Practica 5 exitosamente en **evernote** favor de seguir las siguientes instrucciones:
 En el Asunto del email se debe incluir su nombre, número de matrícula seguido de las siguient indicacion: @Actividad1 
 
-**Ejemplo: Marco A. González Tagle Matricula 1213458 @Practica5**
+**Ejemplo: Marco A. González Tagle Matricula 1213458 @Actividad1**
