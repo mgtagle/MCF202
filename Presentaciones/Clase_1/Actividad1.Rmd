@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 
 # MCF202 Análisis estadísticos
 ## Actividad 1: Manipulación de datos en R
@@ -53,8 +56,26 @@ HR: Humedad relativa
  * Cuantos datos de **TEMPCOMB** tienen son iguales o mayores a la media de  **TEMPCOMB**:
  * Cuantos datos de **HR** tienen son iguales o menores a la media de  **HR**:
 
+
+### Realizar muestras
+
+Con la base de datos, realizar una submuestra `(subset)` de la siguiente manera:
+
+1. Determinar un subconjunto con los datos de **TEMPCOMB** menores a la media y detrminar los siguientes puntos:
+  * Cual es la media de la variable
+  * Cual es la desviación estándar de la variable:
+  
+2. Determinar un subconjunto con los datos de **HUMCOMB** menores a la media y detrminar los siguientes puntos:
+  * Cual es la media de la variable
+  * Cual es la desviación estándar de la variable:
+
+
+Con la base de datos original, realizar una submuestra `(subset)` con las siguientes restriciones:
+  * __DIRR__ Dirección de las rafagas de viento mayores a 100
+  * __VELR__ Velociddad de las rafagas de viento mayores a 40 & con Dirección de viento __DIRR__ mayor a 150
+
 ## Entrega a Evernote 
-Para registrar su Practica 5 exitosamente en **evernote** favor de seguir las siguientes instrucciones:
+Para registrar su Practica 1 exitosamente en **evernote** favor de seguir las siguientes instrucciones:
 En el Asunto del email se debe incluir su nombre, número de matrícula seguido de las siguient indicacion: @Actividad1 
 
 **Ejemplo: Marco A. González Tagle Matricula 1213458 @Actividad1**
