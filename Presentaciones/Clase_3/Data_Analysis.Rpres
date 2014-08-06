@@ -1,0 +1,33 @@
+Análisis de datos con R
+========================================================
+author: Dr. Marco Aurelio González Tagle
+date: 07 Agosto 2014
+transition: linear
+## MCF 202 Aplicaciones y Conceptos
+### Comparación de medias
+https://rpubs.com/mgtagle-73/Introduccion_202
+https://github.com/mgtagle/MCF202
+
+First Slide
+========================================================
+
+For more details on authoring R presentations click the
+**Help** button on the toolbar.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
