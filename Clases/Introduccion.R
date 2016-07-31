@@ -6,7 +6,6 @@
 
 # Operaciones básicas -----------------------------------------------------
 
-
 n <- 10
 n
 n + n 
@@ -37,7 +36,7 @@ g.ha <- g.1000*10
 
 # Importar Datos ----------------------------------------------------------
 
-parcela.1 <- read.csv("datos/dbh_2012.csv", header=TRUE)
+parcela.1 <- read.csv("/Users/marcogonzalez/GitHub/MCF202/datos/dbh_2012.csv", header=TRUE)
 head(parcela.1)
 
 
